@@ -1,13 +1,5 @@
 from sets import Set
 
-# Get the segment's starting address
-ea = ScreenEA()
-funcA=0x408bab
-funcB=0x401730
-
-callersA=Set()
-callersB=Set()
-
 def GetRefToSet(to_func,s=Set()):
     s.add(GetFunctionName(to_func))
     for r in CodeRefsTo(to_func,1):
@@ -15,6 +7,15 @@ def GetRefToSet(to_func,s=Set()):
             #print("%s @ %x" % (GetFunctionName(r),LocByName(GetFunctionName(r))))
             GetRefToSet(LocByName(GetFunctionName(r)),s)
     return s
+
+# Get the segment's starting address
+ea = ScreenEA()
+funcA=ChooseFunction("Please select function A").startEA
+funcB=ChooseFunction("Please select function B").startEA
+
+callersA=Set()
+callersB=Set()
+
 
 print "Caller list of function A:"
 GetRefToSet(funcA,callersA)
