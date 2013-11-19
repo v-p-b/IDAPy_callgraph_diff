@@ -10,8 +10,8 @@ def GetRefToSet(to_func,s=Set()):
 
 # Get the segment's starting address
 ea = ScreenEA()
-funcA=ChooseFunction("Please select function A").startEA
-funcB=ChooseFunction("Please select function B").startEA
+funcA=ChooseFunction("Please select function A")
+funcB=ChooseFunction("Please select function B")
 
 callersA=Set()
 callersB=Set()
